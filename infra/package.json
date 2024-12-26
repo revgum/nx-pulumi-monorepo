@@ -1,0 +1,21 @@
+{
+  "name": "infra",
+  "dependencies": {
+    "@pulumi/pulumi": "latest",
+    "s3folder": "*",
+    "website-deploy": "*",
+    "website": "*"
+  },
+  "scripts": {
+    "build": "tsc",
+    "deploy": "pulumi up --stack dev"
+  },
+  "nx": {
+    "targets": {
+      "deploy": {
+        "cache": true,
+        "dependsOn": ["build", "website:generate"]
+      }
+    }
+  }
+}
